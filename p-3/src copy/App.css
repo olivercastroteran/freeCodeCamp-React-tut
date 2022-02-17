@@ -1,0 +1,6 @@
+.container {
+  min-width: 55rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.1);
+}
