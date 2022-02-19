@@ -1,9 +1,11 @@
 import './App.css';
+import { Header, Meme } from './components';
 
 function App() {
   return (
-    <div className="container">
-      <h1>P-2</h1>
+    <div className="App">
+      <Header />
+      <Meme />
     </div>
   );
 }
