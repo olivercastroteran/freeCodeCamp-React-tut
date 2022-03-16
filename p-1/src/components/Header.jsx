@@ -1,6 +1,7 @@
 import logo from '../assets/images/logo.png';
+import { ToggleBtn } from './';
 
-const Header = () => {
+const Header = ({ isDarkMode, toggleDark }) => {
   return (
     <header className="header">
       <h1>
@@ -8,6 +9,7 @@ const Header = () => {
         <span>ReactFacts</span>
       </h1>
       <p>React Course - Project 1</p>
+      <ToggleBtn toggle={toggleDark} isOn={isDarkMode} />
     </header>
   );
 };

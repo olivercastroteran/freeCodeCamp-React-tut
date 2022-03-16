@@ -1,8 +1,8 @@
 import logo from '../assets/images/logo.png';
 
-const List = () => {
+const List = ({ isDarkMode }) => {
   return (
-    <div className="main">
+    <div className={`main ${!isDarkMode && 'off'}`}>
       <h2>Fun facts about React</h2>
       <ul>
         <li>
