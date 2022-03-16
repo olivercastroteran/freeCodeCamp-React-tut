@@ -1,34 +1,46 @@
-import { useState } from 'react';
-import { memesData } from './memesData';
+import { useEffect, useState } from 'react';
+// import { memesData } from './memesData';
 
 const Meme = () => {
-  const [allMemeImgs] = useState(memesData);
+  const [allMemes, setAllMemes] = useState([]);
   const [meme, setMeme] = useState({
     topText: '',
     bottomText: '',
     imgUrl: 'https://i.imgflip.com/30b1gx.jpg',
   });
 
+  // const getMemes = async () => {
+  //   const res = await fetch('https://api.imgflip.com/get_memes');
+  //   const data = await res.json();
+  //   return data;
+  // };
+
+  useEffect(() => {
+    fetch('https://api.imgflip.com/get_memes')
+      .then((res) => res.json())
+      .then((data) => setAllMemes(data.data.memes));
+    //eslint-disable-next-line
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setMeme((prevMeme) => ({
-      ...meme,
+      ...prevMeme,
       [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const memesArr = allMemeImgs.data.memes;
-    const randomNum = Math.floor(Math.random() * memesArr.length);
+    const randomNum = Math.floor(Math.random() * allMemes.length);
 
     setMeme((prevMeme) => {
       return {
         ...prevMeme,
-        imgUrl: memesArr[randomNum].url,
+        imgUrl: allMemes[randomNum].url,
       };
     });
-    console.log(meme);
+    // console.log(meme);
   };
 
   return (
