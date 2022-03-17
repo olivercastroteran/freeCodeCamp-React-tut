@@ -1,6 +1,30 @@
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [dices, setDices] = useState([]);
+  // const [tenzies, setTenzies] = useState(false);
+
+  const allNewDices = () => {
+    const arr = [];
+
+    for (let i = 0; i < 10; i++) {
+      arr.push({
+        value: Math.floor(Math.random() * 6) + 1,
+        isFreeze: false,
+      });
+    }
+
+    setDices(arr);
+
+    return arr;
+  };
+
+  useEffect(() => {
+    const arr = allNewDices();
+    setDices(arr);
+  }, []);
+
   return (
     <div className="App">
       <h1>Tenzies</h1>
@@ -9,18 +33,16 @@ function App() {
         current value between rolls
       </p>
       <div className="dices-container">
-        <div className="dice">1</div>
-        <div className="dice">2</div>
-        <div className="dice">3</div>
-        <div className="dice">4</div>
-        <div className="dice">5</div>
-        <div className="dice">6</div>
-        <div className="dice">5</div>
-        <div className="dice">4</div>
-        <div className="dice">3</div>
-        <div className="dice">2</div>
+        {dices &&
+          dices.map((dice) => (
+            <div className="dice" key={Math.random()}>
+              {dice.value}
+            </div>
+          ))}
       </div>
-      <button className="btn">Roll</button>
+      <button className="btn" onClick={allNewDices}>
+        Roll
+      </button>
     </div>
   );
 }
