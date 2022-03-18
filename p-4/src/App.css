@@ -63,4 +63,15 @@ button:active {
   justify-content: center;
   box-shadow: 0 2px 0.5rem rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.dice:hover {
+  color: #fff;
+  background-color: #5a4f83;
+}
+
+.dice.selected {
+  color: #fff;
+  background-color: #5a4f83;
 }
